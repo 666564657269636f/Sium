@@ -3,6 +3,9 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
+    name = 'test'
+
+    
     return "Ciao, Flask! SIUSAUJDIUAS"
 
 if __name__ == "__main__":

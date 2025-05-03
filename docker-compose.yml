@@ -1,19 +1,6 @@
 version: '3.8'
 
 services:
-  frontend:
-    build: ./frontend
-    ports:
-      - "3000:3000"
-    restart: always
-    volumes:
-      - ./frontend:/app
-      - /app/node_modules
-    environment:
-      - CHOKIDAR_USEPOLLING=true
-    depends_on:
-      - backend
-
   backend:
     build: ./backend
     ports:
@@ -25,6 +12,7 @@ services:
       - FLASK_APP=app.py
       - FLASK_ENV=development
       - FLASK_DEBUG=1
+      - MYSQL_DB=MilitaryManager
       - DB_HOST=mysql
       - DB_PORT=3306
       - DB_NAME=myapp_db

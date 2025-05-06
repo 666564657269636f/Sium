@@ -7,6 +7,13 @@ CREATE TABLE IF NOT EXISTS Users (
     name VARCHAR(255) NOT NULL,
     surname VARCHAR(255) NOT NULL,
     email VARCHAR(255) UNIQUE NOT NULL
+    -- Corso di laurea
+    -- Corpo di appartenenza: Tramot, Ing
+    -- IsAdmin
+    -- Telefono
+    -- Indirizzo di casa
+    -- Password (e tutto ciò che richiede nel caso l'hash)
+    -- Username
 );
 
 CREATE TABLE IF NOT EXISTS Subjects (

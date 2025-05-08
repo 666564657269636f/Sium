@@ -4,11 +4,17 @@ from flask_cors import CORS
 from database.db import cursor
 from users import user_bp
 
+from services.status_service import status_bp
+from services.subjects_service import subject_bp
+# from services.users_service import users_bp
+
 app = Flask(__name__)
 
 cors = CORS(app=app, resources={r"/api/*": {"origins": "*"}})
 
 app.register_blueprint(user_bp, url_prefix='/api')
+app.register_blueprint(status_bp, url_prefix='/api')
+app.register_blueprint(subject_bp, url_prefix='/api')
 
 @app.route("/")
 def home(): 

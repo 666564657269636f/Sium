@@ -1,5 +1,4 @@
-from flask import Blueprint
-from flask import jsonify
+from flask import Blueprint, jsonify
 from database.db import cursor
 
 # Crei il blueprint per la route
@@ -87,5 +86,3 @@ class Users:
         
         except Exception as e:
             return jsonify({"Error": str(e)}), 500
-    
-            

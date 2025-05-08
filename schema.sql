@@ -44,7 +44,8 @@ VALUES
     ('Matematica'),
     ('Fisica'),
     ('Informatica'),
-    ('Chimica');
+    ('Chimica'),
+    ('Inglese');
 
 INSERT INTO Status (user_id, subject_id, mark, cfu)
 VALUES

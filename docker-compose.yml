@@ -8,7 +8,6 @@ services:
     restart: always
     volumes:
       - ./backend:/app
-      - ./backend/schema.sql:/docker-entrypoint-initdb.d/schema.sql
     environment:
       - FLASK_APP=app.py
       - FLASK_ENV=development

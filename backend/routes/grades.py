@@ -97,11 +97,19 @@ class Status:
         try:
             cursor.execute('INSERT INTO Status (user_id, subject_id, mark) VALUES (%s, %s, %s);', (self.user_id, self.subject_id, self.mark, ))
             self.id = cursor.lastrowid
+            cursor._connection.commit()
             if not self.id:
                 logging.error('Errore nella creazione dello status')
                 raise StatusCreationError('Errore nella creazione dello status')
-        except Exception as e:
-            raise e
+        except Exception:
+            raise
+
+    def _delete(self) -> None:
+        try:
+            cursor.execute('DELETE FROM Status WHERE id = %s;', (self.id, ))
+            cursor._connection.commit()
+        except Exception:
+            raise
 
     # Getter
     def get_id(self) -> int:

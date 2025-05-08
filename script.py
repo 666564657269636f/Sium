@@ -14,5 +14,14 @@ def test_subjects():
         else:
             logging.info(f'Message: { response.text } Status Code: { response.status_code }')
     
-if __name__ == '__main__':
-    test_subjects()
+# if __name__ == '__main__':
+#     pass
+
+URL = 'http://localhost:5000/api/subjects'
+response = requests.delete(URL, json=[
+    {'id': 13},
+    {'id': 12},
+    {'id': 10}
+]
+)
+print(response.text)

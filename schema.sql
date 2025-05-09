@@ -32,6 +32,13 @@ CREATE TABLE IF NOT EXISTS Grades (
     CONSTRAINT unique_user_subject UNIQUE (user_id, subject_id)
 );
 
+CREATE TABLE IF NOT EXISTS Curriculums (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    filename VARCHAR(255) UNIQUE,
+    FOREIGN KEY (user_id) REFERENCES Users(id) ON DELETE CASCADE
+)
+
 INSERT INTO Users (name, surname, email, course, department, is_admin, phone, address, password, username)
 VALUES
     ('Luca', 'Rossi', 'luca.rossi@example.com', 'Ingegneria Informatica', 'Ing', TRUE, '3451234567', 'Via Roma 10, Milano', 'admin123', 'lrossi'),

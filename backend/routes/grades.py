@@ -3,16 +3,6 @@ import logging
 from typing import List, Dict
 from database.db import cursor
 
-"""
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    user_id INT NOT NULL,
-    subject_id INT NOT NULL,
-    mark INT NOT NULL,
-    cfu INT NOT NULL,
-    FOREIGN KEY (user_id) REFERENCES Users(id) ON DELETE CASCADE,
-    FOREIGN KEY (subject_id) REFERENCES Subjects(id) ON DELETE CASCADE
-"""
-
 class DatabaseError(Exception):
     pass
 
@@ -52,7 +42,7 @@ class Grades:
         elif user_id and subject_id and mark:
             self._create()
         else:
-            raise GradeError('Parametri non validi per l\'inizializzazione di Status') # Modificare il nome dell'eccezione ed aggiungi quali parametri non vanno bene
+            raise GradeError('Parametri non validi per l\'inizializzazione di Grade') # Modificare il nome dell'eccezione ed aggiungi quali parametri non vanno bene
     
     def to_dict(self) -> Dict[str, int]:
         return {

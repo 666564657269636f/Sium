@@ -28,7 +28,8 @@ CREATE TABLE IF NOT EXISTS Grades (
     subject_id INT NOT NULL,
     mark INT NOT NULL,
     FOREIGN KEY (user_id) REFERENCES Users(id) ON DELETE CASCADE,
-    FOREIGN KEY (subject_id) REFERENCES Subjects(id) ON DELETE CASCADE
+    FOREIGN KEY (subject_id) REFERENCES Subjects(id) ON DELETE CASCADE,
+    CONSTRAINT unique_user_subject UNIQUE (user_id, subject_id)
 );
 
 INSERT INTO Users (name, surname, email, course, department, is_admin, phone, address, password, username)

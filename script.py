@@ -17,11 +17,10 @@ def test_subjects():
 # if __name__ == '__main__':
 #     pass
 
-URL = 'http://localhost:5000/api/subjects'
-response = requests.delete(URL, json=[
-    {'id': 13},
-    {'id': 12},
-    {'id': 10}
-]
-)
+URL = 'http://localhost:5000/api/grades/grade'
+response = requests.post(URL, json={
+    'user_id': 1,
+    'subject_id': 7,
+    'mark': 30
+})
 print(response.text)

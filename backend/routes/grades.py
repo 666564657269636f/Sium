@@ -28,14 +28,14 @@ class GradeValueNotFound(GradeError):
 class GradeCreationError(GradeError):
     pass
 
-class Status:
+class Grades:
     def __init__(self, id: int = None, user_id: int = None, subject_id: int = None, mark: int = None, create: bool = True):
         self.id: int = id
         self.user_id: int = user_id
         self.subject_id: int = subject_id
         self.mark: int = mark
 
-        if create:
+        if not create:
             return
 
         # Se passo solo l'id voglio un certo status
@@ -64,11 +64,11 @@ class Status:
 
     # Static Methods
     @staticmethod
-    def get_grades() -> List['Status']:
+    def get_grades() -> List['Grades']:
         try:
             cursor.execute('SELECT * FROM Grades;')
             grades = cursor.fetchall()
-            return [Status(id=grade[0], user_id=grade[1], subject_id=grade[2], mark=grade[3], create=False) for grade in grades]
+            return [Grades(id=grade[0], user_id=grade[1], subject_id=grade[2], mark=grade[3], create=False) for grade in grades]
         except Exception as e:
             raise 
 
@@ -88,7 +88,7 @@ class Status:
 
     def _get_status_from_db_by_user_id_and_subject_id(self) -> None:
         try:
-            cursor.execute('SELECT id, mark, cfu FROM Grades WHERE user_id = %s and subject_id = %s;', (self.user_id, self.subject_id))
+            cursor.execute('SELECT id, mark FROM Grades WHERE user_id = %s and subject_id = %s;', (self.user_id, self.subject_id))
             value = cursor.fetchone()
             if not value:
                 logging.error(f'No status found for id = { self.id }')

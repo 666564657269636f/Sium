@@ -16,24 +16,27 @@ from database.db import cursor
 class DatabaseError(Exception):
     pass
 
-class StatusError(Exception):
+class GradeError(Exception):
     pass
 
-class StatusNotFound(StatusError):
+class GradeNotFound(GradeError):
     pass
 
-class StatusValueNotFound(StatusError):
+class GradeValueNotFound(GradeError):
     pass
 
-class StatusCreationError(StatusError):
+class GradeCreationError(GradeError):
     pass
 
 class Status:
-    def __init__(self, id: int = None, user_id: int = None, subject_id: int = None, mark: int = None):
+    def __init__(self, id: int = None, user_id: int = None, subject_id: int = None, mark: int = None, create: bool = True):
         self.id: int = id
         self.user_id: int = user_id
         self.subject_id: int = subject_id
         self.mark: int = mark
+
+        if create:
+            return
 
         # Se passo solo l'id voglio un certo status
         if id and not user_id and not subject_id and not mark:
@@ -49,9 +52,9 @@ class Status:
         elif user_id and subject_id and mark:
             self._create()
         else:
-            raise StatusError('Parametri non validi per l\'inizializzazione di Status') # Modificare il nome dell'eccezione ed aggiungi quali parametri non vanno bene
+            raise GradeError('Parametri non validi per l\'inizializzazione di Status') # Modificare il nome dell'eccezione ed aggiungi quali parametri non vanno bene
     
-    def to_dict(self) -> Dict[int, int, int, int]:
+    def to_dict(self) -> Dict[str, int]:
         return {
             'id': self.id,
             'user_id': self.user_id,
@@ -61,20 +64,22 @@ class Status:
 
     # Static Methods
     @staticmethod
-    def get_statuss() -> List['Status']:
+    def get_grades() -> List['Status']:
         try:
-            pass
+            cursor.execute('SELECT * FROM Grades;')
+            grades = cursor.fetchall()
+            return [Status(id=grade[0], user_id=grade[1], subject_id=grade[2], mark=grade[3], create=False) for grade in grades]
         except Exception as e:
             raise 
 
     # Getter from DB by id
     def _get_status_from_db_by_id(self) -> None:
         try:
-            cursor.execute('SELECT user_id, subject_id, mark FROM Status WHERE id = %s;', (self.id, ))
+            cursor.execute('SELECT user_id, subject_id, mark FROM Grades WHERE id = %s;', (self.id, ))
             value = cursor.fetchone()
             if not value:
                 logging.error(f'No status found for id = { self.id }')
-                raise StatusValueNotFound('Valori non validi per la classe')
+                raise GradeValueNotFound('Valori non validi per la classe')
             self.user_id = value[0]
             self.subject_id = value[1]
             self.mark = value[2]
@@ -83,11 +88,11 @@ class Status:
 
     def _get_status_from_db_by_user_id_and_subject_id(self) -> None:
         try:
-            cursor.execute('SELECT id, mark, cfu FROM Status WHERE user_id = %s and subject_id = %s;', (self.user_id, self.subject_id))
+            cursor.execute('SELECT id, mark, cfu FROM Grades WHERE user_id = %s and subject_id = %s;', (self.user_id, self.subject_id))
             value = cursor.fetchone()
             if not value:
                 logging.error(f'No status found for id = { self.id }')
-                raise StatusValueNotFound('Valori non validi per la classe')
+                raise GradeValueNotFound('Valori non validi per la classe')
             self.id = value[0]
             self.mark = value[1]
         except Exception as e:
@@ -95,18 +100,18 @@ class Status:
 
     def _create(self) -> None:
         try:
-            cursor.execute('INSERT INTO Status (user_id, subject_id, mark) VALUES (%s, %s, %s);', (self.user_id, self.subject_id, self.mark, ))
+            cursor.execute('INSERT INTO Grades (user_id, subject_id, mark) VALUES (%s, %s, %s);', (self.user_id, self.subject_id, self.mark, ))
             self.id = cursor.lastrowid
             cursor._connection.commit()
             if not self.id:
                 logging.error('Errore nella creazione dello status')
-                raise StatusCreationError('Errore nella creazione dello status')
+                raise GradeCreationError('Errore nella creazione dello status')
         except Exception:
             raise
 
     def _delete(self) -> None:
         try:
-            cursor.execute('DELETE FROM Status WHERE id = %s;', (self.id, ))
+            cursor.execute('DELETE FROM Grades WHERE id = %s;', (self.id, ))
             cursor._connection.commit()
         except Exception:
             raise

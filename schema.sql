@@ -65,7 +65,7 @@ VALUES
     ('Statistica', 6),
     ('Elettronica', 9);
 
-INSERT INTO Status (user_id, subject_id, mark)
+INSERT INTO Grades (user_id, subject_id, mark)
 VALUES
     (1, 1, 30),
     (1, 2, 28),

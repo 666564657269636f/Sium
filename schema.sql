@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS Curriculums (
     user_id INT NOT NULL,
     filename VARCHAR(255) UNIQUE,
     FOREIGN KEY (user_id) REFERENCES Users(id) ON DELETE CASCADE
-)
+);
 
 INSERT INTO Users (name, surname, email, course, department, is_admin, phone, address, password, username)
 VALUES

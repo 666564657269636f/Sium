@@ -66,7 +66,11 @@ class Curriculum:
 
     def _create(self) -> None:
         try:
-            cursor.execute('INSERT INTO Curriculums (user_id, filename) VALUES (%s, %s);', (self.get_user_id(), self.get_filename(), ))
+            cursor.execute('''
+                INSERT INTO Curriculums (user_id, filename) 
+                VALUES (%s, %s)
+                ON DUPLICATE KEY UPDATE filename = %s;
+            ''', (self.get_user_id(), self.get_filename(), self.get_filename(), ))
             cursor._connection.commit()
             self.id = cursor.lastrowid
             if not self.id:

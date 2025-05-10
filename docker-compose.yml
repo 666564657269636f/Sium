@@ -35,5 +35,18 @@ services:
       - mysql-data:/var/lib/mysql
       - ./schema.sql:/docker-entrypoint-initdb.d/schema.sql:ro
 
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    restart: always
+    environment:
+      - NODE_ENV=development
+    command: npm start  # Avvia il server di sviluppo React
+    depends_on:
+      - backend
+    volumes:
+      - ./frontend:/app
+
 volumes:
   mysql-data:

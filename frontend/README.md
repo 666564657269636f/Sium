@@ -1,84 +1,70 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Getting Started with Create React App
 
-## Getting Started
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-First, run the development server:
+## Available Scripts
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+In the project directory, you can run:
 
-To create a component (Atom, Molecule, Organism):
-```bash
-npm run plop
-```
+### `npm start`
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### `npm test`
+
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+### `npm run build`
+
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
+
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### `npm run eject`
+
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
 ## Learn More
 
-To learn more about React Next.js, take a look at the following resources:
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-- [React](https://react.dev/) - learn React.
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+To learn React, check out the [React documentation](https://reactjs.org/).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Code Splitting
 
-## Deploy on Vercel
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Analyzing the Bundle Size
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-## ShadCN UI
+### Making a Progressive Web App
 
-This project uses [ShadCN UI](https://ui.shadcn.com/) to provide a set of pre-built, customizable components built on top of [Radix UI](https://radix-ui.com/). ShadCN UI makes it easy to start with accessible and functional components while offering the flexibility to modify and style them according to your project's needs.
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Features
+### Advanced Configuration
 
-- **Pre-built components**: A library of commonly used UI components, such as buttons, dialogs, forms, and more.
-- **Fully customizable**: Components are integrated directly into your project, allowing you to modify their code.
-- **TailwindCSS support**: Pre-configured styles using TailwindCSS utilities.
-- **Powered by Radix UI**: Ensures accessibility and robust behavior out of the box.
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### How to Use ShadCN UI Components
+### Deployment
 
-1. **Add a new component**:  
-   Run the following command to generate a component:
-   ```bash
-   npx shadcn add [component-name]
-   ```
-   Example:
-   ```bash
-   npx shadcn add button
-   ```
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-2. **Access the components**:  
-   Components will be added to the `components/ui` directory. You can use them directly in your project like this:
-   ```jsx
-   import { Button } from "@/components/ui/button";
+### `npm run build` fails to minify
 
-   export default function Example() {
-     return <Button>Click Me</Button>;
-   }
-   ```
-
-3. **Customize the components**:  
-   Since components are copied into your project, you can freely edit their code and styles to meet your requirements.
-
-### Learn More
-
-- [ShadCN UI Documentation](https://ui.shadcn.com/docs)  
-  Explore detailed guides and examples to get the most out of ShadCN UI.
-- [Radix UI Documentation](https://www.radix-ui.com/themes/docs/overview/getting-started)  
-  Understand the foundation of the components used in ShadCN UI.
-
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

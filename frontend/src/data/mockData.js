@@ -10,7 +10,7 @@ export const mockUserData = {
     username: "marco.rossi",
     profilePicture: "https://randomuser.me/api/portraits/men/32.jpg",
     rank: "Cadetto",
-    completedExams: 18,
+    completedExams: 20,
     totalExams: 30,
     averageGrade: 27.4,
     weightedAverage: 28.2,

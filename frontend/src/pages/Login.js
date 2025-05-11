@@ -4,10 +4,13 @@ import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { FaUser, FaLock, FaArrowLeft } from "react-icons/fa"
 import { GiStarsStack } from "react-icons/gi"
+import { useUser } from "../context/UserContext"
+import { mockUserData } from "../data/mockData"
 import "../styles/Login.css"
 
 const Login = () => {
   const navigate = useNavigate()
+  const { setUser } = useUser()
   const [formData, setFormData] = useState({
     username_or_email: "",
     password: "",
@@ -29,25 +32,27 @@ const Login = () => {
     setLoading(true)
 
     try {
-      const response = await fetch("http://localhost:5000/api/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      })
+      // In a real app, this would be a fetch to the API
+      // For demo purposes, we'll simulate a successful login
+      // and redirect to the dashboard
 
-      const data = await response.json()
+      // Simulate API call delay
+      await new Promise((resolve) => setTimeout(resolve, 1000))
 
-      if (!response.ok) {
-        throw new Error(data.message || "Errore durante l'autenticazione")
+      // For demo, just check if username/email and password are not empty
+      if (!formData.username_or_email || !formData.password) {
+        throw new Error("Username/email e password sono obbligatori")
       }
 
-      // Salva il token o i dati utente in localStorage/sessionStorage
-      localStorage.setItem("userToken", data.token)
+      // Simulate successful login
+      const token = "mock-jwt-token"
+      localStorage.setItem("userToken", token)
 
-      // Reindirizza alla dashboard o home page
-      navigate("/")
+      // Set user in context
+      setUser(mockUserData)
+
+      // Redirect to dashboard
+      navigate("/dashboard")
     } catch (err) {
       setError(err.message || "Si è verificato un errore durante l'accesso")
     } finally {

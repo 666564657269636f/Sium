@@ -1,0 +1,321 @@
+.statistiche-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .statistiche-main {
+    flex: 1;
+  }
+  
+  /* Hero Section */
+  .statistiche-hero {
+    position: relative;
+    height: 40vh;
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    background: linear-gradient(rgba(43, 49, 24, 0.7), rgba(42, 59, 76, 0.8)),
+      url("/public/images/military-statistics.jpg") center / cover no-repeat;
+    margin-top: 0;
+    padding-top: 80px;
+  }
+  
+  .statistiche-hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+      45deg,
+      rgba(0, 0, 0, 0.05),
+      rgba(0, 0, 0, 0.05) 10px,
+      rgba(0, 0, 0, 0.08) 10px,
+      rgba(0, 0, 0, 0.08) 20px
+    );
+  }
+  
+  .statistiche-hero-title {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    position: relative;
+  }
+  
+  .statistiche-hero-subtitle {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--accent-color);
+    position: relative;
+  }
+  
+  /* Intro Section */
+  .statistiche-intro {
+    padding: 70px 0;
+    background-color: var(--background-color);
+  }
+  
+  .statistiche-intro-content {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease-out;
+  }
+  
+  .statistiche-intro-content.animate {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .statistiche-intro-icon {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+  }
+  
+  .statistiche-intro-text {
+    font-size: 1.1rem;
+    line-height: 1.7;
+  }
+  
+  /* Charts Section */
+  .statistiche-charts {
+    padding: 70px 0;
+    background-color: #fff;
+  }
+  
+  .charts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    gap: 30px;
+  }
+  
+  .chart-card {
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    padding: 25px;
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  
+  .chart-card.animate {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .chart-card:nth-child(1) {
+    transition-delay: 0.1s;
+  }
+  
+  .chart-card:nth-child(2) {
+    transition-delay: 0.2s;
+  }
+  
+  .chart-card:nth-child(3) {
+    transition-delay: 0.3s;
+  }
+  
+  .chart-card:nth-child(4) {
+    transition-delay: 0.4s;
+  }
+  
+  .chart-card:nth-child(5) {
+    transition-delay: 0.5s;
+  }
+  
+  .chart-card.full-width {
+    grid-column: 1 / -1;
+  }
+  
+  .chart-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+  }
+  
+  .chart-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .chart-icon {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-right: 15px;
+  }
+  
+  .chart-title {
+    font-size: 1.3rem;
+    margin: 0;
+    color: var(--military-dark-green);
+  }
+  
+  .chart-description {
+    margin-bottom: 20px;
+  }
+  
+  .chart-description p {
+    font-size: 0.95rem;
+    color: var(--military-gray);
+    line-height: 1.6;
+  }
+  
+  .chart-container {
+    height: 300px;
+    position: relative;
+  }
+  
+  .pie-chart-container,
+  .radar-chart-container {
+    height: 280px;
+    max-width: 280px;
+    margin: 0 auto;
+  }
+  
+  /* Highlights Section */
+  .statistiche-highlights {
+    padding: 70px 0;
+    background-color: var(--military-light-gray);
+  }
+  
+  .highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+  }
+  
+  .highlight-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 30px 20px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+  }
+  
+  .highlight-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  }
+  
+  .highlight-icon {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+  }
+  
+  .highlight-value {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--military-dark-green);
+    margin-bottom: 10px;
+  }
+  
+  .highlight-label {
+    font-size: 1rem;
+    color: var(--military-gray);
+  }
+  
+  /* CTA Section */
+  .statistiche-cta-section {
+    background: linear-gradient(rgba(42, 59, 76, 0.9), rgba(42, 59, 76, 0.9)),
+      url("/public/images/military-background.jpg") center / cover no-repeat;
+    padding: 80px 0;
+    text-align: center;
+    color: var(--text-light);
+  }
+  
+  .cta-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .cta-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-light);
+  }
+  
+  .cta-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  /* Responsive */
+  @media (max-width: 992px) {
+    .statistiche-hero-title {
+      font-size: 2.5rem;
+    }
+  
+    .statistiche-hero-subtitle {
+      font-size: 1.1rem;
+    }
+  
+    .charts-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .statistiche-hero {
+      min-height: 250px;
+    }
+  
+    .statistiche-hero-title {
+      font-size: 2rem;
+    }
+  
+    .chart-container {
+      height: 250px;
+    }
+  
+    .cta-buttons {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .primary-button,
+    .secondary-button {
+      width: 100%;
+      max-width: 250px;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .statistiche-hero-title {
+      font-size: 1.8rem;
+    }
+  
+    .statistiche-intro-text {
+      font-size: 1rem;
+    }
+  
+    .chart-title {
+      font-size: 1.1rem;
+    }
+  
+    .highlight-value {
+      font-size: 2rem;
+    }
+  }
+  

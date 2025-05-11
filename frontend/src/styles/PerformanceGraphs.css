@@ -1,0 +1,81 @@
+.performance-graphs {
+    margin-bottom: 40px;
+  }
+  
+  .graphs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 25px;
+    margin-top: 25px;
+  }
+  
+  .graph-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    padding: 20px;
+    transition: all 0.3s ease;
+  }
+  
+  .graph-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+  }
+  
+  .graph-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .graph-icon {
+    font-size: 1.3rem;
+    color: var(--primary-color);
+    margin-right: 12px;
+  }
+  
+  .graph-title {
+    font-size: 1.2rem;
+    margin: 0;
+    color: var(--military-dark-green);
+  }
+  
+  .graph-description {
+    margin-bottom: 15px;
+  }
+  
+  .graph-description p {
+    font-size: 0.95rem;
+    color: var(--military-gray);
+    margin: 0;
+  }
+  
+  .graph-container {
+    height: 250px;
+    position: relative;
+  }
+  
+  .doughnut-container {
+    height: 220px;
+    max-width: 220px;
+    margin: 0 auto;
+  }
+  
+  /* Responsive */
+  @media (max-width: 992px) {
+    .graphs-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .graph-container {
+      height: 220px;
+    }
+  
+    .doughnut-container {
+      height: 180px;
+      max-width: 180px;
+    }
+  }
+  

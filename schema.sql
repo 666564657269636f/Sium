@@ -2,6 +2,66 @@ CREATE DATABASE IF NOT EXISTS MilitaryManager;
 
 USE MilitaryManager;
 
+
+CREATE TABLE IF NOT EXISTS Ranks (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    description TEXT
+);
+
+CREATE TABLE IF NOT EXISTS Departments (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    description TEXT
+);
+
+CREATE TABLE IF NOT EXISTS Courses (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    description TEXT,
+    department_id INT,
+    CONSTRAINT fk_course_department FOREIGN KEY (department_id) REFERENCES Departments(id)
+);
+
+CREATE TABLE IF NOT EXISTS Subjects (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    description TEXT,
+    credits INT NOT NULL,
+    course_id INT,
+    CONSTRAINT fk_subject_course FOREIGN KEY (course_id) REFERENCES Courses(id)
+);
+
+CREATE TABLE IF NOT EXISTS Users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    surname VARCHAR(255) NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL, 
+    phone VARCHAR(20) NOT NULL,
+    address VARCHAR(255) NOT NULL,                                
+    password VARCHAR(255) NOT NULL,
+    username VARCHAR(255) UNIQUE NOT NULL,
+    profile_picture VARCHAR(255),
+    rank_id INT,
+    course_id INT,
+    department_id INT,
+    CONSTRAINT fk_users_rank FOREIGN KEY (rank_id) REFERENCES Ranks(id),
+    CONSTRAINT fk_users_course FOREIGN KEY (course_id) REFERENCES Courses(id),
+    CONSTRAINT fk_users_department FOREIGN KEY (department_id) REFERENCES Departments(id)
+);
+
+CREATE TABLE IF NOT EXISTS ExamHistory (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    subject_id INT NOT NULL,
+    date DATE NOT NULL,
+    grade INT NOT NULL,
+    CONSTRAINT fk_exam_user FOREIGN KEY (user_id) REFERENCES Users(id),
+    CONSTRAINT fk_exam_subject FOREIGN KEY (subject_id) REFERENCES Subjects(id)
+);
+
+
+/*
 CREATE TABLE IF NOT EXISTS Users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
@@ -105,3 +165,4 @@ VALUES
     (15, 7, 26),
     (16, 6, 18),
     (17, 3, 21);
+*/
